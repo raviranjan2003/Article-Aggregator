@@ -39,6 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       // Map response data to article format
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const articleData = response.data.organic.map((item: any) => {
         return {
         title: item.title,

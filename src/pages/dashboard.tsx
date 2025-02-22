@@ -56,6 +56,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="flex flex-wrap justify-center">
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         {articles.length ? articles.map((article: any) => (
           <NewsCard
             key={article.id}
