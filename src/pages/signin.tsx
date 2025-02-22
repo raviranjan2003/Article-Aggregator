@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { auth } from "../../lib/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../lib/firebase";
+// import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 
 export default function Signin() {

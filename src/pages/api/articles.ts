@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // Map response data to article format
       const articleData = response.data.organic.map((item: any, i: number) => {
-        console.log("Item "+i+" "+ item)
+        //console.log("Item "+i+" "+ item)
         return {
         title: item.title,
         url: item.link,
