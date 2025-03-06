@@ -58,6 +58,7 @@ export default function Dashboard() {
     },
     onSuccess: (data) => {
       // Update the articles query cache with the new data
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       queryClient.setQueryData(['articles'], (oldData: any) => {
         return [...(oldData || []), ...data.articleData];
       });
@@ -104,6 +105,7 @@ export default function Dashboard() {
             <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
           </div>
         ) : articles.length ? (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           articles.map((article: any, ind: number) => (
             <NewsCard
               key={ind}
@@ -115,7 +117,7 @@ export default function Dashboard() {
           ))
         ) : (
           <div className="mt-2 text-center">
-            <h1 className="text-gray-600">There's nothing to display. Enter a category to get customized articles.</h1>
+            <h1 className="text-gray-600">There is nothing to display. Enter a category to get customized articles.</h1>
           </div>
         )}
       </div>

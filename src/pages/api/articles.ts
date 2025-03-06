@@ -102,7 +102,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const articles = await getArticlesByUserEmail(req.user.email);
       return res.status(200).json(articles);
     } catch (error) {
-      return res.status(500).json({ message: 'Error fetching articles' });
+      return res.status(500).json({ message: 'Error fetching articles' + error });
     }
   } else {
     return res.status(405).json({ message: 'Method Not Allowed' });
