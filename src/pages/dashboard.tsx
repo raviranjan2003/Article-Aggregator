@@ -118,6 +118,7 @@ export default function Dashboard() {
               <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
             </div>
           ) : articles.length ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             articles.map((article: any, ind: number) => (
               <NewsCard
                 key={ind}
