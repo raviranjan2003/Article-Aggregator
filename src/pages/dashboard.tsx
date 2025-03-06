@@ -76,50 +76,63 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-5">
-      <Header />
-      <div className="flex justify-between">
-        <h1 className="text-2xl font-bold">Your Articles</h1>
-        <div className="flex gap-1">
-          <input 
-            type="text" 
-            placeholder="Enter category" 
-            className="border border-b-2 px-2"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-          <button
-            className="border-1 rounded-lg bg-slate-500 text-white px-4 py-2 flex items-center justify-center gap-2 hover:bg-slate-600 disabled:opacity-50"
-            onClick={() => searchArticles(category)}
-            disabled={isSearching || !category.trim()} 
-          >
-            {isSearching ? (
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            ) : 'Search Articles'}
-          </button>
-        </div>
-      </div>
-      <div className="flex flex-wrap justify-center gap-4 mt-6">
-        {isLoadingArticles ? (
-          <div className="text-center">
-            <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          </div>
-        ) : articles.length ? (
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          articles.map((article: any, ind: number) => (
-            <NewsCard
-              key={ind}
-              title={article.title}
-              snippet={article.snippet}
-              url={article.url}
-              imageUrl="https://img.freepik.com/premium-vector/breaking-news-live-banner-world-map-background-vector-illustration_258787-1348.jpg?w=800"
+    <div className="min-h-screen relative">
+      {/* Background Image with Overlay */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: 'url("/5174551.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.1
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 p-5">
+        <Header />
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold text-[#0388d2]"></h1>
+          <div className="flex gap-1">
+            <input 
+              type="text" 
+              placeholder="Enter category" 
+              className="border border-b-2 px-2 rounded-md focus:outline-none focus:ring-[#0388d2] focus:border-[#0388d2]"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
             />
-          ))
-        ) : (
-          <div className="mt-2 text-center">
-            <h1 className="text-gray-600">There is nothing to display. Enter a category to get customized articles.</h1>
+            <button
+              className="border-1 rounded-lg bg-[#0388d2] text-white px-4 py-2 flex items-center justify-center gap-2 hover:bg-[#0277bd] disabled:opacity-50"
+              onClick={() => searchArticles(category)}
+              disabled={isSearching || !category.trim()} 
+            >
+              {isSearching ? (
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : 'Search Articles'}
+            </button>
           </div>
-        )}
+        </div>
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
+          {isLoadingArticles ? (
+            <div className="text-center">
+              <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+            </div>
+          ) : articles.length ? (
+            articles.map((article: any, ind: number) => (
+              <NewsCard
+                key={ind}
+                title={article.title}
+                snippet={article.snippet}
+                url={article.url}
+                imageUrl="https://img.freepik.com/premium-vector/breaking-news-live-banner-world-map-background-vector-illustration_258787-1348.jpg?w=800"
+              />
+            ))
+          ) : (
+            <div className="mt-2 text-center">
+              <h1 className="text-gray-600">There is nothing to display. Enter a category to get customized articles.</h1>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
