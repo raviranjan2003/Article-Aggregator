@@ -15,8 +15,10 @@ export default function Signin() {
     // const user = await signInWithEmailAndPassword(auth, email, password);
     // console.log(user);
     const response = await axios.post("/api/signin", { email, password });
+    console.log(response);
     if(response.status === 200) {
       localStorage.setItem("user" , response.data.data.userEmail);
+      localStorage.setItem("token" , response.data.data.token);
       router.push('/dashboard');
     }
   };
